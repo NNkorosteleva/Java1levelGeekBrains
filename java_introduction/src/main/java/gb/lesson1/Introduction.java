@@ -51,14 +51,14 @@ public class Introduction {
      * 1. Написать метод вычисляющий выражение a * (b + (c / d)) и возвращающий результат с плавающей точкой,
      * где a, b, c, d – целочисленные входные параметры этого метода;
      */
-    public double expression(int a, int b, int c, int d){
+    private double expression(int a, int b, int c, int d){
         return a * (b + (double) c/d);
     }
     /**
      * 2. Написать метод, принимающий на вход два целых числа, и проверяющий что их сумма лежит в пределах
      * от 10 до 20(включительно), если да – вернуть true, в противном случае – false;
      */
-    public boolean check_interval(int a, int b){
+    private boolean check_interval(int a, int b){
         return ((a+b)>=10 && (a+b)<=20)?true:false;
     }
     /**
@@ -69,17 +69,17 @@ public class Introduction {
      * check_positive_v1 - выводит тексовое сообщение
      * check_positive_v2 - вывод true, если число положительное, false - отрицательное
      */
-    public String check_positive_v1(int a){
+    private String check_positive_v1(int a){
         return a>=0?"число положительное":"число отрицательное";
     }
-    public boolean check_positive_v2(int a){
+    private boolean check_positive_v2(int a){
         return a>=0?true:false;
     }
     /**
      * 4. Написать метод, которому в качестве параметра передается строка, обозначающая имя,
      * метод должен вернуть приветственное сообщение «Привет, переданное_имя!»; Вывести приветствие в консоль.
      */
-    public String welcoming(String name){
+    private String welcoming(String name){
         return "Привет, " + name + "!";
     }
     /**
@@ -90,21 +90,21 @@ public class Introduction {
      * check_leap_year_v1 - выводит тексовое сообщение
      * check_leap_year_v2 - вывод true, если год високосный, false - не високосный год
      */
-    public String check_leap_year_v1(int year){
+    private String check_leap_year_v1(int year){
         return ((year % 100 != 0 || year % 400 == 0) && year % 4 == 0)? year + " - високосный год":year + " - не високосный год";
     }
-    public boolean check_leap_year_v2(int year){
+    private boolean check_leap_year_v2(int year){
         return (year % 100 == 0 )?(year % 400 == 0):(year % 4 == 0);
     }
     /**
      * статичный метод setVariableInt для ввода с клавиатуры целого числа
      * статичный метод setVariableString для ввода с клавиатуры символьной строки
      */
-    public static int setVariableInt() throws IOException {
+    private static int setVariableInt() throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         return Integer.parseInt(reader.readLine());
     }
-    public static String setVariableString() throws IOException {
+    private static String setVariableString() throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         return reader.readLine();
     }
