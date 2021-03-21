@@ -49,6 +49,19 @@ public class ArraysClass {
         System.out.print("\nМассив случайных целых чисел:");
         arrays.arrayPrint(arr_random2);
         System.out.print("\nМожно ли провести границу внутри массива? " + arrays.arrayCheckBalance(arr_random2));
+        /**
+         * тестирование 7 задания
+         */
+        int[] arr_random3 = arrays.arrayRandom(6);
+        System.out.print("\nМассив случайных целых чисел:");
+        arrays.arrayPrint(arr_random3);
+        System.out.print("\nНовый массив со свдигом вправо на 7 шаг:");
+        arrays.arrayPrint(arrays.arrayShift(arr_random3, 7));
+        int[] arr_random4 = arrays.arrayRandom(6);
+        System.out.print("\nМассив случайных целых чисел:");
+        arrays.arrayPrint(arr_random4);
+        System.out.print("\nНовый массив со свдигом влево на 5 шаг:");
+        arrays.arrayPrint(arrays.arrayShift(arr_random4, -5));
     }
 
     /**
@@ -159,6 +172,47 @@ public class ArraysClass {
             }
         }
         return sum1 == sum2;
+    }
+
+    /**
+     * 7. Написать метод, которому на вход подается одномерный массив и число n (может быть положительным,
+     * или отрицательным), при этом метод должен сместить все элементы массива на n позиций.
+     * Элементы смещаются циклично. Для усложнения задачи нельзя пользоваться вспомогательными массивами.
+     * Примеры: [ 1, 2, 3 ] при n = 1 (на один вправо) -> [ 3, 1, 2 ]; [ 3, 5, 6, 1]
+     * при n = -2 (на два влево) -> [ 6, 1, 3, 5 ]. При каком n в какую сторону сдвиг можете выбирать сами.
+     */
+    private int[] arrayShift(int[] arr, int n) {
+        ArraysClass arrays = new ArraysClass();
+        int shift = (n > 0) ? n % arr.length : (n * -1) % arr.length;
+
+        for (int i = 1; i <= shift; i++) {
+            arr = (n > 0) ? arrays.arrayShiftRight(arr) : arrays.arrayShiftLeft(arr);
+        }
+        return arr;
+    }
+
+    /**
+     * Метод сдвигает массив на 1 шаг влево
+     */
+    private int[] arrayShiftLeft(int[] arr) {
+        int buff = arr[0];
+        for (int i = 0; i < arr.length - 1; i++) {
+            arr[i] = arr[i + 1];
+        }
+        arr[arr.length - 1] = buff;
+        return arr;
+    }
+
+    /**
+     * Метод сдвигает массив на 1 шаг вправо
+     */
+    private int[] arrayShiftRight(int[] arr) {
+        int buff = arr[arr.length - 1];
+        for (int i = arr.length - 1; i > 0; i--) {
+            arr[i] = arr[i - 1];
+        }
+        arr[0] = buff;
+        return arr;
     }
 
     /**
