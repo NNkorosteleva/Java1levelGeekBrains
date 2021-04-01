@@ -29,6 +29,11 @@ public class Employee {
         }
         System.out.println("Всего сотрудников создано: " + countEmployee);
 
+        Singleton singleton = Singleton.getInstance();
+        Singleton singleton1 = Singleton.getInstance();
+        System.out.println(singleton==singleton1); // проверка на то, что создался один и тот же объект. Адреса должны совпадать
+
+
     }
 
     /**
