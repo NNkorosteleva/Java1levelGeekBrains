@@ -30,7 +30,7 @@ public class Plate {
     public boolean eatFood(int n) throws IOException {
         while (!decreaseFood(n)) {
             System.out.println("not enough food in the plate");
-            if (!addFood()) return false;
+            if (!addFood(n)) return false;
         }
         return true;
     }
@@ -43,14 +43,14 @@ public class Plate {
         return false;
     }
 
-    public boolean addFood() throws IOException {
+    public boolean addFood(int n) throws IOException {
         String s;
         do {
             System.out.println("would you like to add food? 0 - NOT, 1 - YES");
             s = reader.readLine();
         } while ((!s.equals("1")) && (!s.equals("0")));
         if (s.equals("1")) {
-            System.out.println("enter the amount of food");
+            System.out.println("enter the amount of food (at least add " + (n - food) + ")");
             food += Integer.parseInt(reader.readLine());
             return true;
         }
